@@ -47,7 +47,7 @@ chmod +x ./v2sitedat_darwin
 
 脚本改自
 
-**https://github.com/ToutyRater/V2Ray-SiteDAT**
+**https://github.com/onplus/v2ray-SiteDAT**
 
 **https://github.com/ToutyRater/V2Ray-SiteDAT**
 

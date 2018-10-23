@@ -18,14 +18,14 @@ chmod +x ./update.sh
 ```
 # linux
 chmod +x ./v2sitedat
-./v2sitedat -dat ./custom.dat -dir ./list
+./v2sitedat -dat ./site.dat -dir ./site
 
 # mac
 chmod +x ./v2sitedat_darwin
-./v2sitedat_darwin -dat ./custom.dat -dir ./list
+./v2sitedat_darwin -dat ./site.dat -dir ./site
 
 # windows
-./v2sitedat.exe -dat ./custom.dat -dir ./list
+./v2sitedat.exe -dat ./site.dat -dir ./site
 
 # 32位操作系统替换为v2sitedat32
 ```
@@ -39,11 +39,13 @@ chmod +x ./v2sitedat_darwin
 
 ## 懒人模式
 
-直接下载custom.dat文件，放到v2ray目录下，修改配置文件，添加相关条目。
+直接下载site.dat文件，放到v2ray目录下，修改配置文件，添加相关条目。
 
 ## 题外话
 
 原始的规则列表里是包含ip规则的，不过数量不多，本来是想加上ip规则的，不过ip加载自定义文件需要geoip.dat文件，该文件本身就比较大，所以把ip规则去掉了，需要的可以自行修改，或者直接在v2ray配置文件中添加ip过滤规则。
+
+经过一番尝试之后，目前ip还是没有搞定，使用[gslsoft](https://github.com/gslsoft/v2ray-custom-geo)提供的工具可以生产自定义的ip.dat文件，但是目前没法使用，会报`country not found:`的错误。
 
 脚本改自
 

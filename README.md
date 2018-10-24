@@ -56,3 +56,5 @@ chmod +x ./v2sitedat_darwin
 规则来自
 
 **https://github.com/h2y/Shadowrocket-ADBlock-Rules**
+
+**https://github.com/vokins/yhosts**

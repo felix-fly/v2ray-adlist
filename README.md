@@ -33,9 +33,7 @@ chmod +x ./v2sitedat_darwin
 ### # domain 规则
 
 * gw
-* gw-ext
 * ad
-* ad-ext
 
 ## 懒人模式
 

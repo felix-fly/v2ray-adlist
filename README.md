@@ -37,7 +37,7 @@ chmod +x ./v2sitedat_darwin
 
 ## 懒人模式
 
-直接下载site.dat文件，放到v2ray目录下，修改配置文件，添加相关条目。
+直接下载site.dat文件，放到v2ray目录下，修改配置文件，添加相关条目。ad为广告列表，gw是某个列表，上网用的，你懂的。
 
 ## 题外话
 
@@ -56,3 +56,8 @@ chmod +x ./v2sitedat_darwin
 **https://github.com/h2y/Shadowrocket-ADBlock-Rules**
 
 **https://github.com/vokins/yhosts**
+
+
+## 更新记录
+2018-11-03
+* 更新ad规则。

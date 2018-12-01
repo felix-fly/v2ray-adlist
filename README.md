@@ -59,6 +59,9 @@ chmod +x ./v2sitedat_darwin
 
 
 ## 更新记录
+2018-12-1
+* 更新ad & gw规则。
+
 2018-11-17
 * 更新ad & gw规则。
 

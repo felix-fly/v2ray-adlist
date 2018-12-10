@@ -21,6 +21,7 @@ cat ../ad.conf >> ad
 
 # Remove those useful
 sed -i '/^l\.qq\.com$/d' ad
+sed -i '/^t7z\.cupid\.iqiyi\.com$/d' ad
 
 # Uniq and sort ad list
 cat ad|awk '{print $1}'|uniq|sort > ../site/ad

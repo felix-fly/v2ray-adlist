@@ -10,8 +10,8 @@ wget -O tv.conf https://raw.githubusercontent.com/vokins/yhosts/master/data/tvbo
 cat sr.conf | grep Proxy|grep DOMAIN-SUFFIX|awk -F, '{print $2}' > gw
 cat ../gw.conf >> gw
 
-# Uniq and sort ad list
-cat gw|awk '{print $1}'|uniq|sort > ../site/gw
+# Uniq and sort gw list
+sort gw | uniq > ../site/gw
 
 # ad
 cat sr.conf | grep Reject|grep DOMAIN-SUFFIX|awk -F, '{print $2}' > ad
@@ -20,11 +20,13 @@ cat tv.conf | grep 127.0.0.1|awk '{print $2}' >> ad
 cat ../ad.conf >> ad
 
 # Remove those useful
-sed -i '/^l\.qq\.com$/d' ad
-sed -i '/^t7z\.cupid\.iqiyi\.com$/d' ad
+sed -i '' '/^l\.qq\.com$/d' ad
+sed -i '' '/^t7z\.cupid\.iqiyi\.com$/d' ad
+sed -i '' '/^api\.cupid\.iqiyi\.com$/d' ad
+sed -i '' '/^store\.iqiyi\.com$/d' ad
 
 # Uniq and sort ad list
-cat ad|awk '{print $1}'|uniq|sort > ../site/ad
+sort ad | uniq > ../site/ad
 
 cd ..
 rm -rf tmp

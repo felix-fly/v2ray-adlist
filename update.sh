@@ -3,16 +3,10 @@
 mkdir tmp
 cd tmp
 
-wget -O gw.txt https://gitlab.com/gfwlist/gfwlist/raw/master/gfwlist.txt
-wget -O ad.conf https://hosts.nfz.moe/full/hosts
+wget -O sr.conf https://raw.githubusercontent.com/h2y/Shadowrocket-ADBlock-Rules/master/sr_top500_banlist_ad.conf
 
 # gw
-if [ "$(uname)" == "Darwin" ]; then
-	base64 -D -i gw.txt -o gw.conf
-else
-	base64 -d gw.txt > gw.conf
-fi
-egrep '[a-z0-9][a-z0-9-]+\.[a-z0-9-]+$' gw.conf -o > gw
+cat sr.conf | grep Proxy|grep DOMAIN-SUFFIX|awk -F, '{print $2}' > gw
 # add custom domain
 cat ../gw.conf >> gw
 
@@ -20,12 +14,16 @@ cat ../gw.conf >> gw
 sort gw | uniq > ../site/gw
 
 # ad
-grep 0.0.0.0 ad.conf |awk '{print $2}' > ad
+cat sr.conf | grep Reject|grep DOMAIN-SUFFIX|awk -F, '{print $2}' > ad
 # add custom ad hosts
 cat ../ad.conf >> ad
 
 # Remove those useful
-# sed -i '' '/^l\.qq\.com$/d' ad
+# if [ "$(uname)" == "Darwin" ]; then
+#     sed -i '' '/^api\.cupid\.iqiyi\.com$/d' ad
+# else
+#     sed -i '/^api\.cupid\.iqiyi\.com$/d' ad
+# fi
 
 # Uniq and sort ad list
 sort ad | uniq > ../site/ad

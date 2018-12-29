@@ -53,14 +53,12 @@ chmod +x ./v2sitedat_darwin
 
 规则来自
 
-某个list
-
-**https://github.com/neoFelhz/neohosts**
+**https://github.com/h2y/Shadowrocket-ADBlock-Rules**
 
 
 ## 更新记录
 2018-12-29
-* 替换了规则来源，gw直接读取某个list，ad来自neoFelhz，减少误杀。
+* 去掉一个ad源，减少误杀。
 
 2018-12-1
 * 更新ad & gw规则。

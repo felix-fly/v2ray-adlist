@@ -18,15 +18,12 @@ cat sr.conf | grep Reject|grep DOMAIN-SUFFIX|awk -F, '{print $2}' > ad
 # add custom ad hosts
 cat ../ad.conf >> ad
 
-# Remove those useful
-# if [ "$(uname)" == "Darwin" ]; then
-#     sed -i '' '/^api\.cupid\.iqiyi\.com$/d' ad
-# else
-#     sed -i '/^api\.cupid\.iqiyi\.com$/d' ad
-# fi
-
 # Uniq and sort ad list
-sort ad | uniq > ../site/ad
+sort -u -o ad ad
+
+# Allow ad in blank list
+comm -2 -3 ad ../ad_blank.conf > ../site/ad
 
 cd ..
 rm -rf tmp
+

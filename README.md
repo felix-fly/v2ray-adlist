@@ -2,7 +2,7 @@
 
 生成自定义广告过滤文件，脚本默认执行环境为linux 64。windows下安装git后可以获得bash仿真环境，大部分linux命令可以执行，更新规则脚本需要wget命令，需要自行安装，可以参考[这里](https://gist.github.com/evanwill/0207876c3243bbb6863e65ec5dc3f058)或者自行百度。
 
-更新规则
+### 更新规则并生成site.dat文件
 
 ```
 # linux/mac
@@ -11,23 +11,6 @@ chmod +x ./update.sh
 
 # windows
 ./update.sh
-```
-
-生成v2ray使用的dat文件
-
-```
-# linux
-chmod +x ./v2sitedat
-./v2sitedat -dat ./site.dat -dir ./site
-
-# mac
-chmod +x ./v2sitedat_darwin
-./v2sitedat_darwin -dat ./site.dat -dir ./site
-
-# windows
-./v2sitedat.exe -dat ./site.dat -dir ./site
-
-# 32位操作系统替换为v2sitedat32
 ```
 
 ### # domain 规则
@@ -57,6 +40,9 @@ chmod +x ./v2sitedat_darwin
 
 
 ## 更新记录
+2018-02-13
+* 将生成site.dat命令整合到update脚本。
+
 2018-12-29
 * 去掉一个ad源，减少误杀。
 

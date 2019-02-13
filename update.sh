@@ -27,3 +27,18 @@ comm -2 -3 ad ../ad_blank.conf > ../site/ad
 cd ..
 rm -rf tmp
 
+# generate site.dat file
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    # linux
+    chmod +x ./v2sitedat
+    ./v2sitedat -dat ./site.dat -dir ./site
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    # mac
+    chmod +x ./v2sitedat_darwin
+    ./v2sitedat_darwin -dat ./site.dat -dir ./site
+elif [[ "$OSTYPE" == "win32" ]]; then
+    # windows
+    ./v2sitedat32.exe -dat ./site.dat -dir ./site
+else
+    # others do nothing
+fi

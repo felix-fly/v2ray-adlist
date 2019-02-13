@@ -39,6 +39,4 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 elif [[ "$OSTYPE" == "win32" ]]; then
     # windows
     ./v2sitedat32.exe -dat ./site.dat -dir ./site
-else
-    # others do nothing
 fi

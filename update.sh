@@ -20,6 +20,7 @@ cat ../ad.conf >> ad
 
 # Uniq and sort ad list
 sort -u -o ad ad
+sort -u -o ../ad_blank.conf ../ad_blank.conf
 
 # Allow ad in blank list
 comm -2 -3 ad ../ad_blank.conf > ../site/ad
@@ -66,4 +67,3 @@ elif [[ "$OSTYPE" == "win32" ]]; then
     ./v2sitedat32.exe -dat ./site.dat -dir ./site
     ./v2sitedat32.exe -dat ./mini.dat -dir ./mini
 fi
-

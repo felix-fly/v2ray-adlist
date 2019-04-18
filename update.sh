@@ -58,6 +58,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     # mac
     chmod +x ./v2sitedat_darwin
+    rm ./site/.DS_Store ./mini/.DS_Store
     ./v2sitedat_darwin -dat ./site.dat -dir ./site
     ./v2sitedat_darwin -dat ./mini.dat -dir ./mini
 elif [[ "$OSTYPE" == "win32" ]]; then

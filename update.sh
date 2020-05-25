@@ -1,6 +1,7 @@
 #!/bin/bash
 
 mkdir tmp
+mkdir site
 cd tmp
 # Rules source
 wget -O sr.conf https://raw.githubusercontent.com/h2y/Shadowrocket-ADBlock-Rules/master/sr_top500_banlist_ad.conf
@@ -53,3 +54,5 @@ elif [[ "$OSTYPE" == "win32" ]]; then
     # windows
     ./v2sitedat32.exe -dat ./site.dat -dir ./site
 fi
+
+rm -rf site

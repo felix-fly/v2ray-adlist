@@ -1,5 +1,22 @@
 #!/bin/bash
 
+function buildSite() {
+    # generate site.dat file
+    if [[ "$OSTYPE" == "linux-gnu" ]]; then
+        # linux
+        chmod +x ./v2sitedat
+        ./v2sitedat -dat ./$1 -dir ./site
+    elif [[ "$OSTYPE" == "darwin"* ]]; then
+        # mac
+        chmod +x ./v2sitedat_darwin
+        rm ./site/.DS_Store
+        ./v2sitedat_darwin -dat ./$1 -dir ./site
+    elif [[ "$OSTYPE" == "win32" ]]; then
+        # windows
+        ./v2sitedat32.exe -dat ./$1 -dir ./site
+    fi
+}
+
 mkdir tmp
 mkdir site
 cd tmp
@@ -7,6 +24,8 @@ cd tmp
 wget -O sr.conf https://raw.githubusercontent.com/h2y/Shadowrocket-ADBlock-Rules/master/sr_top500_banlist_ad.conf
 # Another ad source
 wget -O hosts https://cdn.jsdelivr.net/gh/neoFelhz/neohosts@gh-pages/basic/hosts
+# A larger ad source from anti-ad
+wget -O anti https://anti-ad.net/anti-ad-for-dnsmasq.conf
 # Custom gw source
 wget -O gw.conf https://raw.githubusercontent.com/felix-fly/v2ray-dnsmasq-dnscrypt/master/config/gw.conf
 # Custom ad source
@@ -38,21 +57,15 @@ sort -u -o ad ad
 comm -2 -3 ad ad_blank.conf > ../site/ad
 
 cd ..
-rm -rf tmp
+buildSite site.dat
 
-# generate site.dat file
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    # linux
-    chmod +x ./v2sitedat
-    ./v2sitedat -dat ./site.dat -dir ./site
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-    # mac
-    chmod +x ./v2sitedat_darwin
-    rm ./site/.DS_Store
-    ./v2sitedat_darwin -dat ./site.dat -dir ./site
-elif [[ "$OSTYPE" == "win32" ]]; then
-    # windows
-    ./v2sitedat32.exe -dat ./site.dat -dir ./site
-fi
+# Include anti-ad
+cd tmp
+cat anti | grep address=/|awk -F/ '{print $2}' >> ad
+sort -u -o ad ad
+comm -2 -3 ad ad_blank.conf > ../site/ad
 
-rm -rf site
+cd ..
+buildSite site-full.dat
+
+rm -rf tmp site

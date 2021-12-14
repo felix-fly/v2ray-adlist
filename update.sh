@@ -21,7 +21,6 @@ mkdir tmp
 mkdir site
 cd tmp
 wget -O ad.hosts https://raw.githubusercontent.com/felix-fly/v2ray-dnsmasq-dnscrypt/master/ad.hosts
-wget -O ad-ext.hosts https://raw.githubusercontent.com/felix-fly/v2ray-dnsmasq-dnscrypt/master/ad-ext.hosts
 wget -O gw.hosts https://raw.githubusercontent.com/felix-fly/v2ray-dnsmasq-dnscrypt/master/gw.hosts
 
 # gw
@@ -32,15 +31,5 @@ cat ad.hosts | awk -F/ '{print $2}' > ../site/ad
 
 cd ..
 buildSite site.dat
-
-# Include ad-ext
-cd tmp
-cat ad.hosts | awk -F/ '{print $2}' > ad
-cat ad-ext.hosts | awk -F/ '{print $2}' >> ad
-sort -u -o ad ad
-mv ad ../site/ad
-
-cd ..
-buildSite site-full.dat
 
 rm -rf tmp site

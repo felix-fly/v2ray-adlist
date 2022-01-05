@@ -22,6 +22,25 @@ chmod +x ./update.sh
 
 直接下载`site.dat`文件，放到v2ray目录下，修改配置文件，添加相关条目。ad为广告列表，gw是某个列表，上网用的，你懂的。
 
+关键部分配置样例，请结合自身使用情况修改
+
+```json
+  "routing": {
+    "strategy": "rules",
+    "settings": {
+      "rules": [{
+        "type": "field",
+        "domain" : ["ext:site.dat:gw"],
+        "outboundTag": "proxy"
+      }, {
+        "type": "field",
+        "domain" : ["ext:site.dat:ad"],
+        "outboundTag": "blocked"
+      }]
+    }
+  }
+```
+
 ## 文件说明
 
 `site.dat`文件包含的是全部gw列表，ad部分主要来自 anti-AD(包含5万余条规则)，以及自己搜集到的一些网站（为了维护方便，统一放在了另一个repo里）。
